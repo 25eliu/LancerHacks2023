@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <title>HTML STYLING</title>
+    <!--CSS FILE-->
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        body {font-family: 'Courier New', Courier, monospace;}
+        .exp{visibility: hidden;}
+    </style>
+</head>
+
+<body>
+
+    <div id="top" class="tab" style="position:fixed;background:white;width:100%;height:50px;">
+        <style>
+            #top {
+                position: top;
+                top: 0;
+                left: 0;
+                z-index: 999;
+                width: 100%;
+                height: 23px;
+            }
+        </style>
+        <button class="tablinks" onclick="openLabel(event, 'Home')">Home</button>
+        <button class="tablinks" onclick="openLabel(event, 'Practice')">Practice</button>
+    </div>
+    <script>
+        function openLabel(evt, label) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(label).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    
+        // Display the "Home" div on page load
+        document.addEventListener("DOMContentLoaded", function() {
+            openLabel(event, 'Home');
+        });
+    </script>
+  
+    <div id="Home" class="tabcontent">
+        <div class="mainBox" style = "position:relative; left:0px; top:2px;">
+            <div class="content">
+                <h1><font><b>How to AP World</b></font></h1>
+                <p><font size = "+2">Learn today with AI!</font></p>
+              </div>
+          <div class="smallBox">
+          </div>
+
+        </div>
+        <p>
+            <center>Welcome to How To AP World. </center>
+            <center>Answer questions to test your knowledge.</center>
+            <center>Start by navigating at the top of your screen!</center>
+        </p>
+    </div>
+      
+    <div id="Practice" class="tabcontent">
+        <script src = "mainLogic.js"></script>
+        <h1 style = "position:relative; left:0px; top:35px;" id = "a"><font><b>Multiple Choice Mania</b></font></h1>
+        <p style = "position:relative; left:0px; top:35px;" id = "aa"><font size = "+2">Test your knowledge by taking our quiz.</font></p>
+        <br>
+
+        <button id="start-quiz-button" onclick="unhide()" style = "position:relative; left:0px; top:50px;" class = "buttonNEW">Start</button>
+        <div class="exp">
+            <div class="quiz-container">
+                <div class="question" id = "questionText" style="visibility: block; position:relative; left:0px; top:15px;"><p style="font-size:30px">
+                    What event marked the end of World War II?
+                </p></div>  
+                <script>
+                    document.getElementById("start-quiz-button").addEventListener("click", function() {
+                    this.style.display = "none";
+                    a.style.display = "none";
+                    aa.style.display = "none";
+                    });
+                </script>                
+                <div class="answer-container">
+                  <div class="answer-bubble" id="answer1" style = "position:relative; left:0px; top:15px;">The Battle of Stalingrad</div>
+                  <div class="answer-bubble" id="answer2" style = "position:relative; left:0px; top:15px;">The D-Day Invasion</div>
+                  <div class="answer-bubble" id="answer3" style = "position:relative; left:0px; top:15px;">The Surrender of Japan</div>
+                  <div class="answer-bubble" id="answer4" style = "position:relative; left:0px; top:15px;">The Fall of the Berlin Wall</div>
+                </div>
+
+                <button id="next-problem-button" onclick="next()" style = "position:relative; left:0px; top:50px;" class = "buttonNEW"> Next Question </button>
+
+                <button id="start-answer-button" onclick="toggleAnswer()" style = "position:relative; left:0px; top:60px;" class = "buttonNEW">Why is this correct?</button>
+                <div class = "exp" style = "visibility:hidden;" id="answer">  
+                <p style = "position:relative; left:0px; top:50px;" id = "answerText">Explanation: The end of World War II is typically marked by the unconditional surrender of the Empire of Japan, which occurred on September 2, 1945. The surrender took place aboard the USS Missouri, a United States battleship, and was accepted by General Douglas MacArthur, Supreme Commander of the Allied Powers, in the presence of representatives from several countries, including the United States, the United Kingdom, and the Soviet Union. This event marked the end of the world's largest and deadliest conflict and brought an end to the hostilities of World War II.</p>
+                </div>
+                </div>
+            </div>
+        </div>
+              <script>
+                const answerBubbles = document.querySelectorAll(".answer-bubble");
+
+                for (let i = 0; i < answerBubbles.length; i++) {
+                answerBubbles[i].addEventListener("click", function() {
+                // Check if the answer is correct
+                if (this.id === "answer3") {
+                this.classList.add("correctABC");
+                } else {
+                this.classList.add("incorrectABC");
+                }
+
+                // Disable the other answer bubbles
+                for (let j = 0; j < answerBubbles.length; j++) {
+                if (answerBubbles[j] !== this) {
+                answerBubbles[j].style.pointerEvents = "none";
+                }
+                }
+                });
+                }
+
+                let currentQuestionIndex = 0;
+                const questionContainer = document.querySelector(".question");
+                const answerContainers = document.querySelectorAll(".answer-bubble");
+
+                function displayQuestion(question) {
+                    questionContainer.textContent = question.text;
+                    for (let i = 0; i < 4; i++) {
+                        answerContainers[i].textContent = question.answers[i].text;
+                    }
+                }
+
+                displayQuestion(questionsFinal[currentQuestionIndex]);
+              </script>
+
+    <script src="LabelLogic.js"></script>
+
+    <div class="bottomFooter">
+        <style type="text/css">
+        </style>
+        <p>2023 Sanjay Mukhyala and Eric Liu</p>
+    </div>
+</body>
+</html>

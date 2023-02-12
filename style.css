@@ -1,0 +1,230 @@
+body {
+    height: 150vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eae8e6;
+    font-family: sans-serif;
+    color: #202c6a;
+}
+
+.bottomFooter {
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+height: 50px;
+background-color: rgba(39, 134, 158, 0.975);
+color: white;
+text-align: center;
+}
+
+.tab {
+overflow: hidden;
+border: 1px solid #ccc;
+background-color: #2c2f43;
+}
+
+.tab button {
+background-color: inherit;
+float: left;
+border: none;
+outline: none;
+cursor: pointer;
+padding: 14px 16px;
+transition: 0.3s;
+font-size: 17px;
+}
+
+/* Hover content */
+.tab button:hover {
+background-color: rgb(199, 191, 191);
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+background-color: rgb(135, 191, 240);
+}
+
+/* Style tab content */
+.tabcontent {
+display: none;
+padding: 6px 12px;
+-webkit-animation: fadeEffect 1s;
+animation: fadeEffect 1s;
+}
+
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+from {opacity: 0;}
+to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+from {opacity: 0;}
+to {opacity: 1;}
+}
+
+
+.mainBox {
+    width: 100vw;
+    height: 500px;
+    top: 1000px;
+    box-sizing: border-box;
+    margin: 10;
+    top: 0px;
+    border: transparent solid;
+    background-color: #6b82bb;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+@keyframes spin {
+  0%{
+    transform: translateY(100px);
+    -webkit-transform: translateY(100px);
+  }
+  100%{
+    transform: translateY(-850px) rotate(360deg);
+    -webkit-transform: translateY(-850px) rotate(360deg);
+  }
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+}
+
+.bubble {
+  width: 12px;
+  height: 12px;
+  color: #0e0d0d;
+  border-radius: 50%;
+  margin: 8px;
+  animation: bounce 1s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-12px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+}
+
+.bubble:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.bubble:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #0e0d0d;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 2em;
+  z-index: 1;
+}
+
+.smallBox {
+  min-width: 200%;
+  min-height: 225%;
+  border-radius: 70%;
+  position: absolute;
+  background: linear-gradient(to right, #4f4a4a 0%, #56518f 51%, #3c6eed 100%);
+  animation: gradient 3s linear infnity;
+  animation-fill-mode: forwards;
+  z-index: 0;
+}
+
+/* Styling for the quiz */
+.quiz-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px;
+}
+
+.question {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.answer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.answer-bubble {
+  background-color: lightgray;
+  padding: 10px 20px;
+  border-radius: 25px;
+  margin: 10px 0;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.answer-bubble:hover {
+  background-color: gray;
+}
+
+.correctABC {
+  background-color: rgb(77, 135, 77);
+}
+
+.incorrectABC {
+  background-color: rgb(230, 85, 85);
+}
+
+.hidden {
+  display: none;
+}
+
+.toggleAnswer .answer-explanation {
+  display: none;
+}
+
+.buttonNEW {
+  background-color: #226060; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 12px;
+}
+
+.buttonNEW:hover {
+  background-color:#5b75cc;
+  transition: 0.7s;
+}
